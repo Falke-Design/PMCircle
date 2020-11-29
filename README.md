@@ -10,30 +10,24 @@ Download [pmCircle.js](https://raw.githubusercontent.com/Falke-Design/PMCircle/m
 
 or use the script over cdn:
 
-`<script src="https://cdn.jsdelivr.net/gh/Falke-Design/PMCircle/dist/pmCircle.js"></script>`
+`<script src="https://cdn.jsdelivr.net/gh/Falke-Design/PMCircle@latest/dist/pmCircle.js"></script>`
 
 ### Init PMCircle
 Add PMCircle after added Controls of Leaflet Geoman **map.pm.addControls()**
 
-`pmCircle = new L.PMCircle(map)`
-
-You can set the circle type on init: ('circle', '2point', '3point')
-
-`pmCircle = new L.PMCircle(map, {circleType: '2point'})`
-
-### Functions
-##### Options
-`pmCircle.setOptions(options)`
 ```
-circleType: 'circle' | '2point' | '3point'
-text: {continueLine: "continueLine", finishCircle: "finishCircle",startCircle: "startCircle",firstVertex: "firstVertex",cancel: "cancel",title: "title"}
+pmCircle = new L.PMCircle(map)
 ```
 
-##### setText
-`pmCircle.setText(options)`
+You can enable or disable the controls with
 ```
-text: {continueLine: "continueLine", finishCircle: "finishCircle",startCircle: "startCircle",firstVertex: "firstVertex",cancel: "cancel",title: "title"}
+map.pm.addControls({
+    "Circle2Point": false, 
+    "Circle3Point": true
+})
 ```
 
-##### setCircleType
-`pmCircle.setCircleType('circle' | '2point' | '3point')`
+Also it is possible to enable the new circle shapes directly
+```
+map.pm.enableDraw("Circle2Point")
+```

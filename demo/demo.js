@@ -18,7 +18,7 @@ const map = L.map('example2')
 
 map.pm.addControls();
 
-var pmCircle = new L.PMCircle(map, {circleType: "circle", text: {'cancel':'Abbrechen'}});
+var pmCircle = new L.PMCircle(map);
 
 const m1 = L.circleMarker([51.50313, -0.091223], { radius: 10 });
 const m2 = L.marker([51.50614, -0.0989]);

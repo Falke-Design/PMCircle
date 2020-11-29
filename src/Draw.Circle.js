@@ -49,7 +49,7 @@ var circleExtend = {
             this._map.on('click', this._placeCircleMarker, this);
             this._hintMarker.on('move', this._syncHintLine, this);
             this._hintMarker.setTooltipContent(
-               this._map.pm.pmCircle.getText('continueLine')
+                L.PM.Utils.getTranslation("tooltips.continueLine")
             );
         }else if(this.options.circleType === '2point'){
             this._map.on('click', this._finishShape, this);

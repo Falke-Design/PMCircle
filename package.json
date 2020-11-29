@@ -1,12 +1,14 @@
 {
   "name": "pmcircle",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependencies": {
     "lodash": "^4.17.15"
   },
   "scripts": {
+    "watch": "npx webpack -w"
   },
   "devDependencies": {
+    "@geoman-io/leaflet-geoman-free": "^2.8.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
