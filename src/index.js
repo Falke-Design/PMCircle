@@ -1,4 +1,3 @@
-import circleExtend from "./Draw.Circle";
 import "./Draw/L.PM.Draw.Circle2Point";
 import "./Draw/L.PM.Draw.Circle3Point";
 
