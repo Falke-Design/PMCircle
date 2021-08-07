@@ -1,3 +1,5 @@
+import '@geoman-io/leaflet-geoman-free'
+
 import "./Draw/L.PM.Draw.Circle2Point";
 import "./Draw/L.PM.Draw.Circle3Point";
 
