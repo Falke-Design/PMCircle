@@ -10,6 +10,9 @@ L.PM.Draw.Circle2Point = L.PM.Draw.Circle.extend({
         var tooltip_text = L.PM.Utils.getTranslation("tooltips.firstVertex");
         // add tooltip to hintmarker
         if (this.options.tooltips && this._hintMarker) {
+            if(this._hintMarker.isTooltipOpen()){
+                this._hintMarker.unbindTooltip();
+            }
             this._hintMarker
                 .bindTooltip(tooltip_text, {
                     permanent: true,
