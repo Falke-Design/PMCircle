@@ -24,6 +24,8 @@ L.PM.Draw.Circle3Point = L.PM.Draw.Circle2Point.extend({
         return this._map.containerPointToLatLng(pt_M);
     },
     _placeCenterMarker(e){
+      this._layerGroup.addLayer(this._layer);
+      this._layerGroup.addLayer(this._centerMarker);
         // assign the coordinate of the click to the hintMarker, that's necessary for
         // mobile where the marker can't follow a cursor
         if (!this._hintMarker._snapped) {
