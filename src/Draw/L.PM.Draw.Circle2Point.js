@@ -2,8 +2,10 @@ import CircleUtils from "../Utils/utils";
 
 L.PM.Draw.Circle2Point = L.PM.Draw.Circle.extend({
     initialize(map) {
+        L.PM.Draw.Circle.prototype.initialize.call(this, map);
         this._map = map;
         this._shape = 'Circle2Point';
+        this.toolbarButtonName = 'drawCircle2Point';
     },
     enable(options) {
         L.PM.Draw.Circle.prototype.enable.call(this,options);
@@ -40,7 +42,7 @@ L.PM.Draw.Circle2Point = L.PM.Draw.Circle.extend({
     },
     _syncCircleRadiusMulti() {
         if(!this._circleMarker){
-            this._createCircleMarker();
+            this._createCircleMarker(this._centerMarker.getLatLng());
         }
         const A = this._centerMarker.getLatLng();
         const M = this._getMiddlePoint();
@@ -60,31 +62,13 @@ L.PM.Draw.Circle2Point = L.PM.Draw.Circle.extend({
         return this._map.containerPointToLatLng(pt_M);
     },
     _placeCenterMarker(e){
-      this._layerGroup.addLayer(this._layer);
-      this._layerGroup.addLayer(this._centerMarker);
-        // assign the coordinate of the click to the hintMarker, that's necessary for
-        // mobile where the marker can't follow a cursor
-        if (!this._hintMarker._snapped) {
-            this._hintMarker.setLatLng(e.latlng);
-        }
-
-        // get coordinate for new vertex by hintMarker (cursor marker)
-        const latlng = this._hintMarker.getLatLng();
-
-        this._centerMarker.setLatLng(latlng);
-
-        this._map.off('click', this._placeCenterMarker, this);
-
-        this._map.on('click', this._finishShape, this);
+        L.PM.Draw.Circle.prototype._placeCenterMarker.call(this, e);
+        this._layer.setLatLng(this._hintMarker.getLatLng());
         this._hintMarker.on('move', this._syncHintLine, this);
-        this._placeCircleCenter();
-
-
     },
     _placeCircleMarker(e) {
-
         if(!this._circleMarker){
-            this._createCircleMarker();
+            this._createCircleMarker(this._hintMarker.getLatLng());
         }
 
         // assign the coordinate of the click to the hintMarker, that's necessary for
@@ -98,7 +82,7 @@ L.PM.Draw.Circle2Point = L.PM.Draw.Circle.extend({
 
         this._circleMarker.setLatLng(latlng);
 
-        this._map.off('click', this._placeCenterMarker, this);
+        this._map.off('click', this._placeCircleMarker, this);
         this._map.on('click', this._finishShape, this);
 
         this._placeCircleCenter();
@@ -151,8 +135,8 @@ L.PM.Draw.Circle2Point = L.PM.Draw.Circle.extend({
             this.enable();
         }
     },
-    _createCircleMarker(){
-        this._circleMarker = L.marker([0, 0], {
+    _createCircleMarker(latlng){
+        this._circleMarker = L.marker(latlng, {
             icon: L.divIcon({ className: 'marker-icon' }),
             draggable: false,
             zIndexOffset: 100,

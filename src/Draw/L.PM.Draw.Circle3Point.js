@@ -2,6 +2,7 @@ import CircleUtils from "../Utils/utils";
 
 L.PM.Draw.Circle3Point = L.PM.Draw.Circle2Point.extend({
     initialize(map) {
+        L.PM.Draw.Circle.prototype.initialize.call(this, map);
         this._map = map;
         this._shape = 'Circle3Point';
         this.toolbarButtonName = 'drawCircle3Point';
@@ -44,6 +45,7 @@ L.PM.Draw.Circle3Point = L.PM.Draw.Circle2Point.extend({
         this._hintMarker.setTooltipContent(
             L.PM.Utils.getTranslation("tooltips.continueLine")
         );
+        this._layer.setLatLng(this._hintMarker.getLatLng());
     },
     _placeCircleCenter() {
         const latlng = this._centerMarker.getLatLng();
@@ -59,5 +61,7 @@ L.PM.Draw.Circle3Point = L.PM.Draw.Circle2Point.extend({
             );
 
         }
+
+        this._syncCircleRadiusMulti();
     }
 });

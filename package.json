@@ -1,16 +1,17 @@
 {
   "name": "pmcircle",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dependencies": {
     "lodash": "^4.17.15"
   },
   "scripts": {
-    "watch": "npx webpack -w"
+    "watch": "npx webpack -w",
+    "build": "npx webpack"
   },
   "devDependencies": {
-    "@geoman-io/leaflet-geoman-free": "^2.11.2",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "@geoman-io/leaflet-geoman-free": "^2.16.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   },
   "description": "This is a [Leaflet Geoman](https://github.com/geoman-io/leaflet-geoman) Subplugin",
   "main": "webpack.build.js",
