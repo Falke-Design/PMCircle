@@ -18,7 +18,7 @@ L.PM.Draw.Circle3Point = L.PM.Draw.Circle2Point.extend({
 
         let pt_M = CircleUtils._calculateCircleCenter3P(pt_A, pt_B, pt_C);
         //If containerpoints on the same point, because of zooming
-        if(isNaN(pt_M.x) || isNaN(pt_M.y)){
+        if(isNaN(pt_M.x) || isNaN(pt_M.y) || !isFinite(pt_M.x) || !isFinite(pt_M.y)){
             pt_M = CircleUtils._calculateCircleCenter2P(pt_A,pt_C);
         }
 
